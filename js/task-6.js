@@ -4,7 +4,7 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const userInput = document.querySelector('input');
+const elementsInput = document.querySelector('input');
 const create = document.querySelector("button[data-create]");
 const destroy = document.querySelector("button[data-destroy]");
 const boxes = document.querySelector("#boxes");
@@ -14,28 +14,25 @@ const controls = document.querySelector("#controls");
 create.addEventListener('click', handleClick);
 
 function handleClick() {
-  if (userInput.value > 0 && userInput.value <= 100) {
-    createBoxes(userInput.value);
-    userInput.value = '';
+  if (elementsInput.value > 0 && elementsInput.value <= 100) {
+    createBoxes(elementsInput.value);
+    elementsInput.value = '';
   } else {
     alert('Amount is not correct')   
   }
 };
 
 destroy.addEventListener("click", () => {
-  userInput.value = '';    
+  elementsInput.value = '';    
    boxes.innerHTML = "";   
   });
   
-let boxsize
-let newDiv 
-
 function createBoxes(amount) {
   boxes.innerHTML = "";
-  boxsize = 30;
-  for (let i = 1; i <= amount; i += 1) {
-    newDiv = `<div style="width: ${boxsize}px; height: ${boxsize}px; background: ${getRandomHexColor()}"></div>`;
-    boxes.insertAdjacentHTML("beforeend", newDiv);
-    boxsize += 10;
+  let boxSize = 30;
+    for (let i = 1; i <= amount; i += 1) {
+     const newDiv = `<div style="width: ${boxSize}px; height: ${boxSize}px; background: ${getRandomHexColor()}"></div>`;
+      boxes.insertAdjacentHTML("beforeend", newDiv);
+      boxSize += 10;
   }
 };

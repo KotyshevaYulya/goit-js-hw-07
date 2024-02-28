@@ -1,12 +1,13 @@
 'use strict';
 
-const textInput = document.querySelector("#name-input");
+const input = document.querySelector("#name-input");
 const output = document.querySelector("#name-output");
 
-textInput.addEventListener("input", (event) => {
-    output.textContent = event.currentTarget.value.trim();
+input.addEventListener("input", (event) => {
+    const textInput = event.currentTarget.value.trim();
+    output.textContent = textInput;
 
-    if (event.currentTarget.value.trim() === "") {
+    if (textInput === "") {
         output.textContent = "Anonymous";
     }
 
